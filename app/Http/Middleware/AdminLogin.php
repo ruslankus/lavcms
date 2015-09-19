@@ -38,7 +38,7 @@ class AdminLogin
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->action('Admin\AdminController@getLogin');
+                return redirect()->action('Admin\MainController@getLogin');
             }
         }
 

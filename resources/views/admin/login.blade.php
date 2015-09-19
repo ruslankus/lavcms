@@ -26,7 +26,7 @@
                         @endif
 
 
-                            <?=Form::open(['method' => 'POST', 'action' => 'Admin\AdminController@postLogin','class' => 'form-horizontal', 'role' => 'form' ])?>
+                            <?=Form::open(['method' => 'POST', 'action' => 'Admin\MainController@postLogin','class' => 'form-horizontal', 'role' => 'form' ])?>
 
 
                             <div class="form-group">

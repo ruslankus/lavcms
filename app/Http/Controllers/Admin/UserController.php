@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -19,7 +20,8 @@ class UserController extends Controller
      */
     public function getIndex()
     {
-        return 'User Controller index';
+        $users = User::all();
+        return view('admin.user_list',compact('users'));
     }
 
     /**

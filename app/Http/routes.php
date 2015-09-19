@@ -15,6 +15,14 @@ Route::get('/',['as' => 'index_page','uses' => 'PageController@getIndex'] );
 
 Route::controller('page','PageController');
 
-Route::controller('admin','Admin\AdminController');
+Route::group(['prefix' => 'admin'], function(){
 
-Route::controller('user','Admin\UserController');
+    Route::controller('main','Admin\MainController');
+
+    Route::controller('user','Admin\UserController');
+
+    Route::controller('product','Admin\ProductController');
+
+    Route::controller('lng','Admin\LngController');
+});
+
