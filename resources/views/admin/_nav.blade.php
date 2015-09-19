@@ -9,13 +9,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Page</a> </li>
-                <li><a href="Menu"></a></li>
+                <li class="active">
+                    <a href="{{ action('Admin\MainController@getIndex') }}">Page</a>
+                </li>
+
+
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  aria-expanded="false">Product menu<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Product list</a></li>
+                        <li><a href="{{ action('Admin\ProductController@getCategory') }}">Categories</a></li>
+                        <li>
+                            <a href="{{ action('Admin\ProductController@getIndex') }}">Product list</a>
+                        </li>
                     </ul>
                 </li>
                 <li><a href="#">Testimonials</a></li>

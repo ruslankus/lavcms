@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('adminLogin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,14 @@ class ProductController extends Controller
      */
     public function getIndex()
     {
-        return 'Product index';
+        return 'Product list';
+    }
+
+
+
+    public function getCategory(){
+
+        return 'Cateegory list';
     }
 
     /**
