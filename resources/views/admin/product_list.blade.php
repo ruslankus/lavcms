@@ -1,8 +1,8 @@
 @extends('admin_layout')
 
 @section('css')
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 @stop
 
 
@@ -15,10 +15,10 @@
         <div class="row">
             <div class="col-md-12 clearfix">
                 <div class="pull-left">
-                    <h2>User List</h2>
+                    <h2>Product List</h2>
                 </div>
                 <div class="pull-right">
-                    <a href="#" class="btn btn-success">Add user</a>
+                    <a href="{{ action('Admin\ProductController@getCreate') }}" class="btn btn-success">Add product</a>
                 </div>
             </div>
             <div class="col-md-12">
@@ -26,38 +26,40 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>login</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th>E-mail</th>
+                        <th>product Name</th>
+                        <th>category</th>
+                        <th>photo</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-
-                    <?php $n =1; foreach($users as $user): ?>
-
                     <tr>
-
-                        <td>{{ $n }}</td>
-                        <td>{{ $user->login }}</td>
-                        <td>{{ $user->fname }}</td>
-                        <td>{{ $user->lname }}</td>
-                        <td>{{ $user->email }}</td>
+                        <td>1</td>
+                        <td>product name</td>
+                        <td>cat name name</td>
+                        <td></td>
                         <td>
                             <a href="{{ action('Admin\ProductController@getEdit',['id' => 1]) }}" class="btn btn-xs btn-info">Edit</a>
                             <a href="#" class="btn btn-xs btn-danger">Delete</a>
                         </td>
                     </tr>
 
-                    <?php endforeach; ?>
+                    <tr>
+                        <td>2</td>
+                        <td>product name</td>
+                        <td>cat name name</td>
+                        <td></td>
+                        <td>
+                            <a href="{{ action('Admin\ProductController@getEdit',['id' => 2]) }}" class="btn btn-xs btn-info">Edit</a>
+                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
+                        </td>
+                    </tr>
 
                     </tbody>
                 </table>
             </div>
         </div>
     </section> <!-- /main -->
-
 
 
 @stop

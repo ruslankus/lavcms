@@ -6,13 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ProductController extends Controller
+class SettingsController extends Controller
 {
-
-    public function __construct(){
-        $this->middleware('adminLogin');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -20,14 +15,7 @@ class ProductController extends Controller
      */
     public function getIndex()
     {
-        return view('admin.product_list');
-    }
-
-
-
-    public function getCategory(){
-
-        return view('admin.prod_cat_list');
+        return 'Index main';
     }
 
     /**
@@ -35,9 +23,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCreate()
+    public function create()
     {
-        return view('admin.add_product');
+        //
     }
 
     /**
@@ -68,9 +56,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getEdit($id)
+    public function edit($id = null)
     {
-        return view('admin.edit_product',compact('id'));
+        return view('admin.edit_product.blade');
     }
 
     /**
