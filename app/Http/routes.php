@@ -13,8 +13,18 @@
 
 Route::get('/',['as' => 'index_page','uses' => 'PageController@getIndex'] );
 
-Route::controller('page','PageController');
+Route::group(
+    ['prefix' => '{lng}',
+    'where' => ['lng' => '[a-z]{2}']],function(){
 
+    Route::controller('page','PageController');
+});
+
+
+
+
+
+//admin part
 Route::group(['prefix' => 'admin'], function(){
 
     Route::controller('main','Admin\MainController');
