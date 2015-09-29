@@ -13,19 +13,11 @@
 
 Route::get('/',['as' => 'index_page','uses' => 'PageController@getIndex'] );
 
-Route::group(
-    ['prefix' => '{lng}',
-    'where' => ['lng' => '[a-z]{2}']],function(){
-
-    Route::controller('page','PageController');
-});
-
-
-
-
 
 //admin part
 Route::group(['prefix' => 'admin'], function(){
+
+    Route::get('/',['as' => 'admin_index','uses' => 'Admin\MainController@getIndex']);
 
     Route::controller('main','Admin\MainController');
 
@@ -37,4 +29,14 @@ Route::group(['prefix' => 'admin'], function(){
 
     Route::controller('setting','Admin\SettingsController');
 });
+
+
+Route::group(
+    ['prefix' => '{lng}',
+        'where' => ['lng' => '[a-z]{2}'],'middleware' => 'LangInit'],function(){
+
+    Route::get('/',['as' => 'index_page','uses' => 'PageController@getIndex'] );
+    Route::controller('page','PageController');
+});
+
 
