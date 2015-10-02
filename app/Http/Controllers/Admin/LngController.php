@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Languages;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -15,7 +16,9 @@ class LngController extends Controller
      */
     public function getIndex()
     {
-        //
+        $langs = Languages::all();
+
+        return view('admin.lang.lang_index',compact('langs'));
     }
 
     /**

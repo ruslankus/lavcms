@@ -3,9 +3,14 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\Languages;
+use Illuminate\Support\Facades\App;
 
 class LangInit
 {
+
+    public static $lng_id = 1;
+
     /**
      * Handle an incoming request.
      *
@@ -15,8 +20,16 @@ class LangInit
      */
     public function handle($request, Closure $next)
     {
-        dd($request);
 
+        $prefix = $request->lng;
+        $lang = Languages::lists('id','prefix');
+
+        if(!empty($lang[$prefix])){
+            self::$lng_id = $lang[$prefix];
+            App::setlocale($prefix);
+
+
+        }
         return $next($request);
     }
 }

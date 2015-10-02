@@ -13,9 +13,15 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getIndex()
+    public function getIndex($prefix = null)
     {
-        return 'IndexPage Controller';
+        return view('pages.main');
+    }
+
+    public function getPage(Request $request,$prefix, $one = null){
+
+        //dd($request);
+        return view('pages.single',compact('one', 'two','three','four','prefix'));
     }
 
 

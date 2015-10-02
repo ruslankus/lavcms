@@ -31,7 +31,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Settings list <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ action('Admin\SettingsController@getIndex') }}">Main setting</a></li>
-                        <li><a href="#">Languages</a></li>
+                        <li><a href="{{action('Admin\LngController@getIndex')}}">Languages</a></li>
                         <li><a href="#">Labels</a></li>
                     </ul>
                 </li>

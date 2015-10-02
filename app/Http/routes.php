@@ -33,6 +33,7 @@ Route::group(['prefix' => 'admin'], function(){
 
 Route::group(
     ['prefix' => '{lng}',
+
         'where' => ['lng' => '[a-z]{2}'],'middleware' => 'LangInit'],function(){
 
     Route::get('/',['as' => 'index_page','uses' => 'PageController@getIndex'] );
