@@ -28,6 +28,13 @@ Route::group(['prefix' => 'admin'], function(){
     Route::controller('lng','Admin\LngController');
 
     Route::controller('setting','Admin\SettingsController');
+
+    Route::controller('slides','Admin\SlidesController');
+
+    Route::controller('tesimonials','Admin\TestimonialsController');
+
+    Route::controller('uniq','Admin\UniqController');
+
 });
 
 

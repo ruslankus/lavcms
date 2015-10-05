@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
+use App\Models\Structure;
+use App\Models\StructTrl;
+use App\Models\Languages;
 
 
 class MainController extends Controller
@@ -26,10 +29,29 @@ class MainController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *
      */
-    public function getIndex()
+    public function getIndex($lng_id = 1)
     {
-        return 'Admin index';
+
+        $lngList = Languages::lists('lang_name','id');
+
+        $structs = Structure::all();
+
+        return view('admin.main.index',compact('structs','lngList','lng_id'));
+    }
+
+
+    public function postIndex(Request $request){
+
+        $lng_id = $request->input('lng_id');
+
+        $lngList = Languages::lists('lang_name','id');
+
+        $structs = Structure::all();
+
+        return view('admin.main.index',compact('structs','lngList','lng_id'));
     }
 
 
@@ -65,6 +87,16 @@ class MainController extends Controller
             ->withErrors([
                 'email' => $this->getFailedLoginMessage(),
             ]);
+    }
+
+
+    /* Get the login username to be used by the controller.
+    *
+    * @return string
+    */
+    public function loginUsername()
+    {
+        return property_exists($this, 'username') ? $this->username : 'login';
     }
 
 

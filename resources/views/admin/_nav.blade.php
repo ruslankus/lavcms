@@ -23,7 +23,11 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#">Testimonials</a></li>
+                <li><a href="{{ action('Admin\TestimonialsController@getIndex') }}">Testimonials</a></li>
+
+                <li><a href="{{ action('Admin\SlidesController@getIndex') }}">Slides</a></li>
+
+                <li><a href="#">Uniq things</a></li>
 
                 <li><a href="{{ action('Admin\UserController@getIndex') }}">Users</a></li>
 

@@ -26,9 +26,10 @@ class LangInit
 
         if(!empty($lang[$prefix])){
             self::$lng_id = $lang[$prefix];
+            //global $lang_id = self::$lng_id;
             App::setlocale($prefix);
-
-
+        }else{
+            //global $lang_id = self::$lng_id;
         }
         return $next($request);
     }

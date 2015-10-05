@@ -19,7 +19,7 @@ class LanguageSeeder extends Seeder
         Languages::create([
             'id' => 1,
             'prefix' => 'en',
-            'lang_name' => 'Enlish'
+            'lang_name' => 'English'
         ]);
 
         Languages::create([
