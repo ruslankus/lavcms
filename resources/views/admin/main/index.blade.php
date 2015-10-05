@@ -27,9 +27,7 @@
 
                         <?php echo Form::select('lng_id',$lngList,$lng_id,['class' => 'form-control']) ?>
 
-
                     </div>
-
 
                     <button type="submit" class="btn btn-default">Change lng</button>
                 <?=Form::close(); ?>
@@ -48,7 +46,7 @@
 
                 <?php  foreach($structs as $str):
 
-                    $strTrl = $str->trl()->where('lng_id','=',$lng_id)->first();
+                    $strTrl = $str->trl->shift();
                 ?>
                 <tr>
                     <td>{{ $str->id}}</td>
@@ -58,8 +56,8 @@
                     <td>{{ $strTrl->trl }}</td>
 
                     <td>
-                        <a href="#" class="btn btn-sm btn-success">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="#" class="btn btn-xs btn-success">Edit</a>
+                        <a href="#" class="btn btn-xs btn-danger">Delete</a>
                     </td>
                 </tr>
                 <?php endforeach?>

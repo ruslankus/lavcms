@@ -37,7 +37,9 @@ class MainController extends Controller
 
         $lngList = Languages::lists('lang_name','id');
 
-        $structs = Structure::all();
+        $structs = Structure::with(['trl' => function($query) use($lng_id) {
+            $query->where('lng_id','=',$lng_id);
+        }])->get();
 
         return view('admin.main.index',compact('structs','lngList','lng_id'));
     }
@@ -49,7 +51,9 @@ class MainController extends Controller
 
         $lngList = Languages::lists('lang_name','id');
 
-        $structs = Structure::all();
+        $structs = Structure::with(['trl' => function($query) use($lng_id) {
+            $query->where('lng_id','=',$lng_id);
+        }])->get();
 
         return view('admin.main.index',compact('structs','lngList','lng_id'));
     }

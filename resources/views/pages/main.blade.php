@@ -2,11 +2,12 @@
 @extends('common_layout')
 
 @section('content')
-    @include('navs._lang_switcher')
+  @foreach($blocksResArr as $block)
+  <div>
 
+    {!! $block !!}
 
-    main page
+  </div>
 
-    <h3>locale : <?=$locale; ?></h3>
-    <p><a href="<?=action('PageController@getPage',['prefix' => $locale,'one' => 1])?>">Link</a></p>
+  @endforeach
 @stop

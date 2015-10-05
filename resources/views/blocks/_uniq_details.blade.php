@@ -1,0 +1,1 @@
+<h2>Uniq detail</h2>
