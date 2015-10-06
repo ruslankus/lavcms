@@ -35,7 +35,7 @@ class StructTrlSeeder extends Seeder
         StructTrl::create([
             'lng_id' => 2,
             'struct_id' => 2,
-            'trl' => 'Слаадер'
+            'trl' => 'Слайдер'
         ]);
 
         StructTrl::create([

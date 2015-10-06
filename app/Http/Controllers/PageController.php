@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Languages;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\View;
 
 class PageController extends Controller
 {
+
+    private  $_blocksArr = [];
     /**
      * Display a listing of the resource.
      *
@@ -23,11 +26,17 @@ class PageController extends Controller
         $blocksArr = [];
         $currLngId = LangInit::$lng_id;
 
-        $blocksArr = Structure::lists('id_name');
+        //$blocksArr = Structure::lists('id_name');
 
-        foreach($blocksArr as $blk){
+        $this->_blocksArr = Structure::with(['trl' => function($query) use ($currLngId){
+            $query->where('lng_id', '=', $currLngId);
+        } ])->get();
 
-            $name = '_'.$blk;
+
+
+        foreach($this->_blocksArr as $blk){
+
+            $name = '_'.$blk->id_name;
             $blocksResArr[] = $this->$name();
         }
 
@@ -53,7 +62,10 @@ class PageController extends Controller
 
     private function _home(){
 
-        $partialView = (string)View::make("blocks._home");
+        $lngList = Languages::lists('prefix','id');
+        $struct = $this->_blocksArr;
+
+        $partialView = (string)View::make("blocks._home",compact('lngList','struct'));
 
         return $partialView;
     }

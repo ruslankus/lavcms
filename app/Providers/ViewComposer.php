@@ -28,7 +28,8 @@ class ViewComposer extends ServiceProvider
 
 
     public function composeLng(){
-        view()->composer('navs._lang_switcher','App\Http\Composers\LngComposer@lngCompose' );
+        //view()->composer('navs._lang_switcher','App\Http\Composers\LngComposer@lngCompose' );
+        view()->composer('blocks._home','App\Http\Composers\LngComposer@lngCompose' );
 
     }
 }
