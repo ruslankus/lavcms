@@ -15,6 +15,11 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
 
+    @if (Session::has('message'))
+        <div class="alert alert-success">{{ Session::get('success_message') }}</div>
+    @endif
+
+
     <section id="list" class="container">
         <div class="filter">
             <h3 class="pull-left">Block list</h3>

@@ -8,7 +8,15 @@ use App\Http\Middleware\LangInit;
 class Structure extends Model
 {
 
-    public function trl($lng_id = 1){
+    protected $fillable = [
+
+        'label',
+        'id_name',
+        'active'
+
+    ];
+
+    public function trl(){
         return $this->hasMany('App\Models\StructTrl','struct_id','id');
     }
 
@@ -16,6 +24,17 @@ class Structure extends Model
     public function scopeActive($query){
         $query->where('active','=',true);
     }
+
+
+    public function trls(){
+        return $this->morphMany('App\Models\StructTrl','tranlations');
+    }
+
+    public function setActiveAttribute($active = null){
+
+        $this->attributes['active'] = ($active == 'on')? true : false;
+    }
+
 
 
 }

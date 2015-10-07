@@ -24,7 +24,7 @@
             <div class="clearfix">
                 <div class="socials clearfix">
                     <div class="img-holder">
-                        <img src="images/social-images.jpg" alt="" >
+                        <img src="/images/social-images.jpg" alt="" >
                     </div>
                     <div>
                         <p>Facebook</p>
@@ -34,7 +34,7 @@
 
                 <div class="socials clearfix">
                     <div class="img-holder">
-                        <img src="images/social-images.jpg" alt="" >
+                        <img src="/images/social-images.jpg" alt="" >
                     </div>
                     <div>
                         <p>Vkontakte</p>
@@ -44,7 +44,7 @@
 
                 <div class="socials clearfix">
                     <div class="img-holder">
-                        <img src="images/social-images.jpg" alt="" >
+                        <img src="/images/social-images.jpg" alt="" >
                     </div>
                     <div>
                         <p>twitter</p>

@@ -63,6 +63,7 @@ class MainController extends Controller
     /**
      *
      *  @param int $id - Structure id
+     *  @return View
      */
     public function getEditStruct($id){
 
@@ -76,6 +77,29 @@ class MainController extends Controller
 
     public function patchUpdateStruct(StructEditRequest $request, $id ){
 
+        $struct = Structure::findOrFail((int)$id);
+        //updating
+        $inputArr = $request->input();
+
+        if(!isset($inputArr['active'])){
+            $inputArr['active'] = false;
+        }
+
+        $struct->update($inputArr);
+
+        //update trls
+        foreach($request->input('trl') as $lng_id => $value){
+            $translation = StructTrl::oneTrl((int)$lng_id, (int)$id)->get()->shift();
+            if(!empty($translation)) {
+                $translation->trl = $value;
+                $translation->save();
+            }else{
+                continue;
+            }
+        }
+
+        return redirect()->action('Admin\MainController@getEditStruct',['id' => $id])
+            ->with(['message' => 'Block has been updated']);
 
     }
 

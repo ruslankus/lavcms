@@ -25,4 +25,12 @@ class StructTrl extends Model
     public function struct(){
         return $this->belongsTo('App\Models\Structure','struct_id','id');
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function tranlations(){
+        return $this->morphTo('translations');
+    }
 }

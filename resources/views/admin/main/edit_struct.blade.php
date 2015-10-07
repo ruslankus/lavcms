@@ -23,7 +23,9 @@
                     </a>
                 </div>
             </div>
+        </div>
 
+        <div class="row">
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -35,7 +37,11 @@
                 </div>
             @endif
 
-            <div class="col-md-12">
+            @if (Session::has('message'))
+                <div class="alert alert-success">{{ Session::get('message') }}</div>
+            @endif
+
+            <div class="col-md-12 ">
 
 
                 <?=Form::model($struct,['method' => 'PATCH',
