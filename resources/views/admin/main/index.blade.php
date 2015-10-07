@@ -41,12 +41,14 @@
                     <th>block label</th>
                     <th>bloct id</th>
                     <th>Перевод</th>
+                    <th>Active</th>
                     <th>actions</th>
                 </tr>
 
                 <?php  foreach($structs as $str):
 
                     $strTrl = $str->trl->shift();
+                    $active = ($str->active)? 'Y': 'N';
                 ?>
                 <tr>
                     <td>{{ $str->id}}</td>
@@ -55,8 +57,10 @@
 
                     <td>{{ $strTrl->trl }}</td>
 
+                    <td>{{ $active }}</td>
                     <td>
-                        <a href="#" class="btn btn-xs btn-success">Edit</a>
+                        <a href="{{action('Admin\MainController@getEditStruct',
+                        ['id' => $str->id])}}" class="btn btn-xs btn-success">Edit</a>
                         <a href="#" class="btn btn-xs btn-danger">Delete</a>
                     </td>
                 </tr>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
+use App\Http\Requests\StructEditRequest;
 use App\Models\Structure;
 use App\Models\StructTrl;
 use App\Models\Languages;
@@ -56,6 +57,26 @@ class MainController extends Controller
         }])->get();
 
         return view('admin.main.index',compact('structs','lngList','lng_id'));
+    }
+
+
+    /**
+     *
+     *  @param int $id - Structure id
+     */
+    public function getEditStruct($id){
+
+        $lngList = Languages::lists('lang_name','id');
+
+        $struct = Structure::with('trl')->findOrFail((int)$id);
+
+        return view('admin.main.edit_struct',compact('lngList','struct'));
+    }
+
+
+    public function patchUpdateStruct(StructEditRequest $request, $id ){
+
+
     }
 
 

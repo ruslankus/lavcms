@@ -28,7 +28,7 @@ class PageController extends Controller
 
         //$blocksArr = Structure::lists('id_name');
 
-        $this->_blocksArr = Structure::with(['trl' => function($query) use ($currLngId){
+        $this->_blocksArr = Structure::active()->with(['trl' => function($query) use ($currLngId){
             $query->where('lng_id', '=', $currLngId);
         } ])->get();
 
@@ -41,8 +41,11 @@ class PageController extends Controller
         }
 
 
-        return view('pages.main',compact('blocksResArr'));
-    }
+        return view('pages.main',compact('blocksResArr','prefix'));
+    }//getIndex
+
+
+
 
     public function getPage(Request $request,$prefix, $one = null){
 

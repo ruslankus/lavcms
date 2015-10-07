@@ -13,4 +13,9 @@ class Structure extends Model
     }
 
 
+    public function scopeActive($query){
+        $query->where('active','=',true);
+    }
+
+
 }

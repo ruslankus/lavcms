@@ -17,7 +17,8 @@ class CreateStructuresTable extends Migration
             $table->string('label',60);
             $table->string('type',60)->nullable();
             $table->string('id_name',60);
-            $table->string('order');
+            $table->boolean('active')->default(true);
+            $table->integer('order');
             $table->timestamps();
         });
     }
