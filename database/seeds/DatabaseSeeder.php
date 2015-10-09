@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageSeeder::class);
         $this->call(StructSeeder::class);
         $this->call(StructTrlSeeder::class);
+        $this->call(SlidesSeeder::class);
+        $this->call( SlideTrlSeeder::class);
 
         Model::reguard();
     }

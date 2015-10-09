@@ -28,10 +28,15 @@ class PageController extends Controller
 
         //$blocksArr = Structure::lists('id_name');
 
-        $this->_blocksArr = Structure::active()->with(['trl' => function($query) use ($currLngId){
+        $this->_blocksArr = Structure::active()->with([
+        'trl' => function($query) use ($currLngId){
             $query->where('lng_id', '=', $currLngId);
-        } ])->get();
-
+        },
+        'slides' => function($query) use ($currLngId){
+            $query->with(['slide_trl' => function($query) use ($currLngId) {
+                $query->where('lng_id', '=', $currLngId );
+            }]);
+        }])->get();
 
 
         foreach($this->_blocksArr as $blk){
@@ -75,7 +80,9 @@ class PageController extends Controller
 
     private function _slides(){
 
-        $partialView = (string)View::make("blocks._slides");
+        $slides = $this->_blocksArr['1']->slides;
+
+        $partialView = View::make("blocks._slides", compact('slides'));
 
         return $partialView;
     }

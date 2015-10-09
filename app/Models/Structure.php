@@ -21,6 +21,11 @@ class Structure extends Model
     }
 
 
+    public function slides(){
+        return $this->hasMany('App\Models\Slides','struct_id','id');
+    }
+
+
     public function scopeActive($query){
         $query->where('active','=',true);
     }
