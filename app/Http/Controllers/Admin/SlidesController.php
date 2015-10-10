@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Slides;
 
 class SlidesController extends Controller
 {
@@ -15,7 +16,9 @@ class SlidesController extends Controller
      */
     public function getIndex()
     {
-        return "Slides controller index";
+        $slides = Slides::all();
+
+        return view('admin.slides.index',compact('slides'));
     }
 
     /**
@@ -27,6 +30,9 @@ class SlidesController extends Controller
     {
         //
     }
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -79,8 +85,8 @@ class SlidesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function getDestroy($id)
     {
-        //
+        dd($id);
     }
 }

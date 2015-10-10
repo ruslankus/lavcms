@@ -29,12 +29,12 @@ class PageController extends Controller
         //$blocksArr = Structure::lists('id_name');
 
         $this->_blocksArr = Structure::active()->with([
-        'trl' => function($query) use ($currLngId){
-            $query->where('lng_id', '=', $currLngId);
-        },
-        'slides' => function($query) use ($currLngId){
-            $query->with(['slide_trl' => function($query) use ($currLngId) {
-                $query->where('lng_id', '=', $currLngId );
+            'trl' => function($query) use ($currLngId){
+                $query->where('lng_id', '=', $currLngId);
+            },
+            'slides' => function($query) use ($currLngId){
+                $query->with(['slide_trl' => function($query) use ($currLngId) {
+                    $query->where('lng_id', '=', $currLngId );
             }]);
         }])->get();
 
