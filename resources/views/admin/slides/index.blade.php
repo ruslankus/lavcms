@@ -21,7 +21,7 @@
         <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif
 
-    @if (Session::has('message'))
+    @if (Session::has('success_message'))
         <div class="alert alert-success">{{ Session::get('success_message') }}</div>
     @endif
 
@@ -29,7 +29,7 @@
     <section id="list" class="container">
         <div class="filter clearfix">
             <h3 class="pull-left">Slides list</h3>
-            <a href="#" class="btn btn-success pull-right">
+            <a href="{{action("Admin\SlidesController@getCreateSlide")}}" class="btn btn-success pull-right">
                 <span class="glyphicon glyphicon-plus"></span>Add slide
             </a>
         </div>
@@ -37,36 +37,42 @@
 
         <div class="list">
             <table class="table">
-                <tr>
-                    <th>id</th>
-                    <th>slide img</th>
-                    <th>Active</th>
-                    <th>actions</th>
-                </tr>
+             <?php if(count($slides) > 0):?>
+                    <tr>
+                        <th>id</th>
+                        <th>slide img</th>
+                        <th>Active</th>
+                        <th>actions</th>
+                    </tr>
 
-                <?php $n =1;  foreach($slides as $slide):
-
-
-                ?>
-                <tr>
-                    <td>{{$n}}</td>
-                    <td><img src="/images/slide-1.jpg" width="300" /></td>
-                    <td>Y</td>
-
-                    <td>
-                        <a href="{{action('Admin\MainController@getEditStruct',
-                        ['id' => $slide->id])}}" class="btn btn-sm btn-success">
-                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit
-                        </a>
+                    <?php $n =1;  foreach($slides as $slide):
 
 
-                        <a href="{{ action('Admin\SlidesController@getDestroy',
-                        ['id' => $slide->id ]) }}" class="btn btn-sm btn-danger slide-delete">
-                        <span class="glyphicon glyphicon-trash"></span>&nbsp;Delete
-                        </a>
-                    </td>
-                </tr>
-                <?php $n++; endforeach?>
+                    ?>
+                    <tr>
+                        <td>{{$n}}</td>
+                        <td><img src="/images/slide-1.jpg" width="300" /></td>
+                        <td>Y</td>
+
+                        <td>
+                            <a href="{{action('Admin\SlidesController@getSlideEdit',
+                            ['id' => $slide->id])}}" class="btn btn-sm btn-success">
+                                <span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit
+                            </a>
+
+
+                            <a href="{{ action('Admin\SlidesController@getDestroy',
+                            ['id' => $slide->id ]) }}" class="btn btn-sm btn-danger slide-delete">
+                            <span class="glyphicon glyphicon-trash"></span>&nbsp;Delete
+                            </a>
+                        </td>
+                    </tr>
+                    <?php $n++; endforeach?>
+                 <?php else:?>
+                 <tr>
+                     <td colspan="4" class="text-center">No slides</td>
+                 </tr>
+                <?php endif;?>
             </table>
 
 

@@ -73,7 +73,7 @@ class PageController extends Controller
         $lngList = Languages::lists('prefix','id');
         $struct = $this->_blocksArr;
 
-        $partialView = (string)View::make("blocks._home",compact('lngList','struct'));
+        $partialView = View::make("blocks._home",compact('lngList','struct'))->render();
 
         return $partialView;
     }
@@ -82,7 +82,7 @@ class PageController extends Controller
 
         $slides = $this->_blocksArr['1']->slides;
 
-        $partialView = View::make("blocks._slides", compact('slides'));
+        $partialView = View::make("blocks._slides", compact('slides'))->render();
 
         return $partialView;
     }

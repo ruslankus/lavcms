@@ -17,13 +17,19 @@
             <?php foreach($slides as $key => $slide):
 
                 $active = ($key == 0)? 'active': '';
-                $caption = $slide->slide_trl->shift();
+                $slide_html = '';
+                $slide_trl = $slide->slide_trl->shift();
+                if(!empty($slide_trl)){
+
+                    $slide_html = $slide_trl->slide_html;
+                }
+
             ?>
 
             <div class="item {{$active}}">
-                <img class="img-responsive" src="/images/{{$slide->img_name}}" >
+                <img class="img-responsive" src="/images/slide_upload/{{$slide->img_name}}" >
                 <div class="carousel-caption">
-                    {!! $caption->slide_html !!}
+                    {!! $slide_html !!}
                 </div>
             </div><!--/item -->
 
