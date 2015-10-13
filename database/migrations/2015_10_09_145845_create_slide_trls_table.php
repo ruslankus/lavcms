@@ -13,6 +13,7 @@ class CreateSlideTrlsTable extends Migration
     public function up()
     {
         Schema::create('slide_trls', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('slide_id')->unsigned();
             $table->integer('lng_id')->unsigned();
             $table->string('slide_alt');

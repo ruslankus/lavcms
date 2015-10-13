@@ -2,14 +2,13 @@
 
 @section('css')
         <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 @stop
 
 
-@include('admin._nav')
-
-
 @section('content')
+
+    @include('admin._nav')
 
     @if (Session::has('message'))
         <div class="alert alert-info">{{ Session::get('message') }}</div>
@@ -21,7 +20,7 @@
 
 
     <section id="list" class="container">
-        <div class="filter">
+        <div class="filter clearfix">
             <h3 class="pull-left">Block list</h3>
             <div class="pull-right">
 

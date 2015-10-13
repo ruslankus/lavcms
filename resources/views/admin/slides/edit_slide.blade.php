@@ -18,6 +18,11 @@
                     <h2>Edit slide</h2>
                 </div>
 
+                <div class="pull-right">
+                    <a href="{!! action('Admin\SlidesController@getIndex') !!}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                    </a>
+                </div>
             </div>
 
             @if (count($errors) > 0)

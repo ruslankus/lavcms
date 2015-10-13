@@ -6,10 +6,12 @@
 @stop
 
 
-@include('admin._nav')
+
 
 
 @section('content')
+
+    @include('admin._nav')
 
     <section id="main" class="container">
         <div class="row">
@@ -18,7 +20,7 @@
                     <h2>Structure block #{{ $struct->id_name }} </h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btn btn-default">
+                    <a href="{!! action('Admin\MainController@getIndex') !!}" class="btn btn-default">
                         <span class="glyphicon glyphicon-share-alt"></span>
                     </a>
                 </div>

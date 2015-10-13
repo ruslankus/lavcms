@@ -2,7 +2,7 @@
 
 @section('css')
         <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 <style type="text/css">
     .list  .table  tr > td {
         vertical-align: middle;
@@ -51,7 +51,7 @@
                     ?>
                     <tr>
                         <td>{{$n}}</td>
-                        <td><img src="/images/slide-1.jpg" width="300" /></td>
+                        <td><img src="/images/slide_upload/{{$slide->img_name}}" width="300" /></td>
                         <td>Y</td>
 
                         <td>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <a href="#" class="btn btn-primary">Delete</a>
+                    <a href="#"  class="btn btn-primary">Delete</a>
                 </div>
             </div>
         </div>
